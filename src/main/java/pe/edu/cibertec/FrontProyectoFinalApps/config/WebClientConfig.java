@@ -22,7 +22,7 @@ public class WebClientConfig {
     @Bean
     public WebClient webClientAutenticacion(WebClient.Builder builder) {
         return builder
-                .baseUrl("http://localhost:8081/autenticacion")
+                .baseUrl("https://back-proyecto-final.azurewebsites.net/autenticacion")
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
     }

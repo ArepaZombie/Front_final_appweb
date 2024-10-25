@@ -10,7 +10,7 @@ import pe.edu.cibertec.FrontProyectoFinalApps.dto.LoginResponseDTO;
 import pe.edu.cibertec.FrontProyectoFinalApps.dto.LogoutRequestDTO;
 import pe.edu.cibertec.FrontProyectoFinalApps.dto.LogoutResponseDTO;
 
-@FeignClient(name = "autenticacion", url = "http://localhost:8081/autenticacion", configuration = AutenticacionFeingConfig.class)
+@FeignClient(name = "autenticacion", url = "https://back-proyecto-final.azurewebsites.net/autenticacion", configuration = AutenticacionFeingConfig.class)
 public interface AutenticacionClient {
 
     @PostMapping("/logout")

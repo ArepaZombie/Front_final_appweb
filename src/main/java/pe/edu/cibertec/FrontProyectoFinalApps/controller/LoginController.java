@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/")
 public class LoginController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class LoginController {
     @Autowired
   AutenticacionClient autenticacionClient;
 
-    @GetMapping("/inicio")
+    @GetMapping("/")
     public String inicio(Model model) {
         LoginModel loginModel = new LoginModel("00", "", "");
         model.addAttribute("loginModel", loginModel);
