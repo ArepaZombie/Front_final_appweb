@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Integrantes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Lista de Integrantes</h1>
+
+
+    <table class="table table-bordered mt-4">
+        <thead>
+        <tr>
+            <th>Código Integrante</th>
+            <th>Nombre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="integrante : ${integrantesList}">
+            <td th:text="${integrante.split(' - ')[0]}"></td>
+            <td th:text="${integrante.split(' - ')[1]}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Agrega este bloque justo antes de la tabla de integrantes -->
+    <div class="mt-4">
+        <a href="#" th:href="@{/login/cerrar-sesion}" class="btn btn-danger">Cerrar Sesión</a>
+    </div>
+
+</div>
+</body>
+</html>
