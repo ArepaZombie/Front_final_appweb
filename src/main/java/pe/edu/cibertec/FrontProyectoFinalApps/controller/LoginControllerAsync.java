@@ -63,10 +63,6 @@ public class LoginControllerAsync {
             return Mono.just(new LoginResponseDTO("99", "Error: Ocurrió un problema en la autenticación", ", ", "", ""));
 
         }
-
-
-
-
     }
     @PostMapping("/logout-async")
     public Mono<LogoutResponseDTO> cerrarSesion(@RequestBody LogoutRequestDTO logoutRequestDTO) {
