@@ -90,7 +90,7 @@ public class LoginController {
       if (codigoIntegrante == null || codigoIntegrante.trim().isEmpty() ||
         password == null || password.trim().isEmpty()) {
         model.addAttribute("loginModel", new LoginModel("01", "Error: Debe completar correctamente sus credenciales", ""));
-        return "inicio";
+        return "";
       }
 
       try{
@@ -100,12 +100,19 @@ public class LoginController {
 
         if(response.getStatusCode().is2xxSuccessful()){
           LoginResponseDTO loginResponseDTO = response.getBody();
-          loginModel = new LoginModel("00", "", loginResponseDTO.nombreUsuario());
-          model.addAttribute("loginModel", loginModel);
-          return listarIntegrantes(model);
+          if(loginResponseDTO.codigo().equals("00")){
+            loginModel = new LoginModel("00", "", loginResponseDTO.nombreUsuario());
+            model.addAttribute("loginModel", loginModel);
+            return listarIntegrantes(model);
+          }else{
+            loginModel = new LoginModel("02", "Datos erroneos", "");
+            model.addAttribute("loginModel", loginModel);
+            return "inicio";
+          }
         }
         else {
           loginModel = new LoginModel("02", "Error: Autenticación fallida", "");
+          model.addAttribute("loginModel", loginModel);
           return "inicio";
         }
       }catch (Exception e){
